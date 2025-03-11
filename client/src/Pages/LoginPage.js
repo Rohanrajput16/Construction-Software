@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../app.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { adminLogin } from "../reducers/commonReducer";
-import PCD from "../images/download.png";
+// import PCD from "../images/download.png";
 import { dashboard, userDashboard } from "../const";
 
 const schema = yup.object().shape({
@@ -20,7 +20,7 @@ const schema = yup.object().shape({
 const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loginMsg } = useSelector((state) => state.commonReducer);
+  // const { loginMsg } = useSelector((state) => state.commonReducer);
 
   return (
     <>
@@ -38,14 +38,14 @@ const LoginPage = () => {
                           dispatch(adminLogin(values));
                           resetForm({ values: "" });
                           setTimeout(() => {
-                            localStorage.getItem("x-auth-token") && localStorage.getItem("slug") == "admin" ?
-                            navigate(dashboard) : localStorage.getItem("x-auth-token") && localStorage.getItem("slug") == "customer" ?
-                            navigate(userDashboard) : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") == 5 ?
-                            navigate("/distributor-list") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") == 2 ?
-                            navigate("/complaints") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") == 3 ?
-                            navigate("/created-distributor") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") == 7 ?
-                            navigate("/salesman-wise-orders") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") == 6 ?
-                            navigate("/company-wise-orders") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") == 9 ?
+                            localStorage.getItem("x-auth-token") && localStorage.getItem("slug") === "admin" ?
+                            navigate(dashboard) : localStorage.getItem("x-auth-token") && localStorage.getItem("slug") === "customer" ?
+                            navigate(userDashboard) : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") === 5 ?
+                            navigate("/distributor-list") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") === 2 ?
+                            navigate("/complaints") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") === 3 ?
+                            navigate("/created-distributor") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") === 7 ?
+                            navigate("/salesman-wise-orders") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") === 6 ?
+                            navigate("/company-wise-orders") : localStorage.getItem("x-auth-token") && localStorage.getItem("userRole") === 9 ?
                             navigate("/salesman-wise-orders") : navigate('/') 
                           }, 1000);
                         }}
@@ -178,7 +178,7 @@ const LoginPage = () => {
                   </div>
                   <div className="col-md-5 ps-0 d-none d-md-block">
                     <div className="bg-thememain form-right h-100 text-white text-center pt-5 pb-5 ">
-                      <img src={PCD}/>
+                      {/* <img src={PCD}/> */}
                       {/* <i className="bi bi-lock"></i>
                       <h2 className="fs-1">Login Here</h2> */}
                     </div>
